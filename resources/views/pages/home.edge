@@ -1,8 +1,9 @@
 @layout.app({ title: 'Post feed' })
   <div class="max-w-2xl mx-auto px-6 py-10">
+
     @flashMessage('notification')
-      <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4" role="alert">
-        {{ $message.message }}
+      <div class="mt-2 bg-pink-100 border border-pink-200 text-sm text-pink-800 rounded-lg p-4" role="alert">
+        🎉 {{ $message.message }} 🌟
       </div>
     @end
 
@@ -10,20 +11,25 @@
       {{ csrfField() }}
 
       <div>
-        <textarea class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" name="content" required rows="3" placeholder="Share an update..."></textarea>
+        <textarea
+          class="py-3 px-4 block w-full border border-fuchsia-200 rounded-xl text-sm focus:border-fuchsia-400 focus:ring-fuchsia-200 bg-white shadow-sm transition-all"
+          name="content" required rows="3"
+          placeholder="📝 Mau cerita apa hari ini? Bagikan di sini... 💬✨"></textarea>
 
         @inputError('content')
-          <p class="text-xs text-red-600 mt-2">{{ $messages }}</p>
+          <p class="text-xs text-red-500 mt-2">⚠️ {{ $messages }} 🥲</p>
         @end
       </div>
 
       <button
-        class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-        Post
+        class="py-3 px-5 w-full flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent bg-gradient-to-r from-pink-400 to-fuchsia-500 text-white hover:brightness-110 transition-all shadow-md">
+        🚀 Kirim Cerita!
       </button>
     </form>
 
     <div class="mt-10 space-y-5">
+      <h2 class="text-xl font-bold text-pink-600 flex items-center gap-2">📬 Cerita Terbaru dari Teman-Teman 💖</h2>
+
       @each(post in posts)
         @include('pages/partials/post')
       @end

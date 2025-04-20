@@ -1,21 +1,27 @@
 @layout.app({title: `${user.name} (${user.handle})`})
   <div class="max-w-2xl mx-auto px-6 py-10">
-    <div>
-      <div class="mt-2 text-center">
-        <h1 class="text-gray-800 text-3xl font-medium">{{ user.name }}</h1>
-        <span class="text-gray-600">{{ user.handle }}</span>
-      </div>
 
-      <div class="mt-4 flex items-center justify-center text-gray-600 space-x-2">
-        <span>{{ user.$extras.posts_count }} {{ pluralize('post', user.$extras.posts_count) }}</span>
-        <span>{{ user.$extras.likes_count }} {{ pluralize('like', user.$extras.likes_count) }}</span>
+    <!-- Profil User -->
+    <div class="bg-white bg-opacity-90 rounded-2xl shadow-md py-6 px-4 text-center">
+      <h1 class="text-fuchsia-600 text-3xl font-extrabold flex justify-center items-center gap-2">
+        👩‍🎓 {{ user.name }} 💫
+      </h1>
+      <p class="text-gray-500 text-sm mt-1">@{{ user.handle }}</p>
+
+      <div class="mt-4 flex items-center justify-center gap-4 text-pink-600 font-semibold text-sm">
+        <div class="flex items-center gap-1">📝 {{ user.$extras.posts_count }} {{ pluralize('Post', user.$extras.posts_count) }}</div>
+        <div class="flex items-center gap-1">💖 {{ user.$extras.likes_count }} {{ pluralize('Like', user.$extras.likes_count) }}</div>
       </div>
     </div>
 
+    <!-- Daftar Post -->
     <div class="mt-10 space-y-5">
+      <h2 class="text-xl font-bold text-pink-500 flex items-center gap-2">📚 Cerita dari {{ user.name }} 💌</h2>
+
       @each(post in user.posts)
         @include('pages/partials/post')
       @end
     </div>
+
   </div>
 @end
